@@ -1,7 +1,9 @@
 import sys
 
 import scipy as sp
-sys.path.append(r"/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/")
+# sys.path.append(r"/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/")
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from environment_loop import EnvironmentLoop
 from Agents.DDPG.agent import DDPG, make_default_networks
 from Environment.environment import make_environment_spec
@@ -11,7 +13,7 @@ def main(_):
     
     # different scenario
     # scneario 1
-    environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/2022-10-05-17-04-03/global_environment_72604a5e5b364143b36131abaffb8b31.pkl"
+    # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/2022-10-05-17-04-03/global_environment_72604a5e5b364143b36131abaffb8b31.pkl"
     # scneario 2
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/scenarios/scenario_2/old_environment_b624df881ef4447ba4f64825347c4f62.pkl"
     # scenario 3

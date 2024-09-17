@@ -1,5 +1,10 @@
 import sys
-sys.path.append(r"/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/")
+import os
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# update this path to match your local directory structure
+# sys.path.append(r"/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/")
+
 from absl import app
 import tensorflow as tf
 
@@ -17,7 +22,8 @@ print("TensorFlow version:", tf.__version__)
 print("Running on CPU")
 
 # from Experiment import run_maddpg
-from .Experiment.run_maddpg import run_mad4pg
+import run_mad4pg
+# from .run_mad4pg import main as run_mad4pg
 # from Experiment import run_optres_edge
 # from Experiment import run_optres_local
 # from Experiment import run_ra
