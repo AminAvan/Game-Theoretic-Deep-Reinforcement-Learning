@@ -60,6 +60,8 @@ def main(_):
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/task_number/0_7/convex_environment_c2ea75aa7cce404e9d9f8af15d49369f.pkl"
     # 0.9
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/task_number/0_9/convex_environment_02893eba453a40638713178e264ec23e.pkl"
+
+    environment_file_name = "/mnt/c/Users/100807003/PycharmProjects/Game-Theoretic-Deep-Reinforcement-Learning/Datasets/dataset_edgesimpy.json"
     
     environment = load_obj(environment_file_name)
     
