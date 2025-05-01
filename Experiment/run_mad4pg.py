@@ -6,18 +6,17 @@ from Utilities.FileOperator import load_obj
 
 
 def main(_):
-    
     # different scenario
     # scneario 1
-    # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/scenarios/scenario_1/convex_environment_b6447224a61e446183f13dd40a04b17b.pkl"
+    environment_file_name = "/mnt/d/Game-Theoretic-Deep-Reinforcement-Learning/Data/2025-04-30-17-07-05/global_environment_f1776398be0e4d91877db9a3b5471bb2.pkl"
     # scneario 2
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/scenarios/scenario_2/convex_environment_f1c365156c98462b9ae0b920d0063533.pkl"
     # scenario 3
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/scenarios/scenario_3/convex_environment_0ff6ea4dcd184438aeb3389520f60aa9.pkl"
     # scenario 4
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/scenarios/scenario_4/convex_environment_1bc5da3127734abc9d015bccf84bc1c0.pkl"
-    
-    # different bandwidth 
+
+    # different bandwidth
     # bandwidth 10 MHz
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/bandwidth/bandwidth10/convex_environment_0c3404cb7b094635b93478b7ed8414d4.pkl"
     # bandwidth 15 MHz
@@ -26,8 +25,8 @@ def main(_):
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/bandwidth/bandwidth25/convex_environment_73e7ad98699f41ac9e940690c9bbf274.pkl"
     # bandwidth 30 MHz
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/bandwidth/bandwidth30/convex_environment_99c0184f2a2f44ffa51e8570a3c56e44.pkl"
-    
-    # different power 
+
+    # different power
     # power 100 mW
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/power/100mW/convex_environment_a7be501bbb0449e78ba3d18a915190f0.pkl"
     # power 550 mW
@@ -36,8 +35,8 @@ def main(_):
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/power/1450mW/convex_environment_13da0cdb1f0f40849099c080b17e60bf.pkl"
     # power 1900 mW
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/power/1900mW/convex_environment_4f77862d11a1479898416ea261c93b66.pkl"
-    
-    # different compuation resources 
+
+    # different compuation resources
     # CPU 1-10GHz
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/computation/1GHz/convex_environment_b80ebdb0027045288b59f66247950cb0.pkl"
     # CPU 2-10GHz
@@ -46,7 +45,7 @@ def main(_):
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/computation/4GHz/convex_environment_aa0f303f501d427296ef9c93a2261868.pkl"
     # CPU 5-10GHz
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/computation/5GHz/convex_environment_68eaeca4ef604e68b4753ad37530e431.pkl"
-    
+
     # different task number
     # 0.1
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/task_number/0_1/convex_environment_323579c648bf4169abcefc1c8036f79c.pkl"
@@ -61,12 +60,10 @@ def main(_):
     # 0.9
     # environment_file_name = "/home/neardws/Documents/Game-Theoretic-Deep-Reinforcement-Learning/Data/task_number/0_9/convex_environment_02893eba453a40638713178e264ec23e.pkl"
 
-    environment_file_name = "/mnt/c/Users/100807003/PycharmProjects/Game-Theoretic-Deep-Reinforcement-Learning/Datasets/dataset_edgesimpy.json"
-    
     environment = load_obj(environment_file_name)
-    
-    spec = make_environment_spec(environment)    
-    
+
+    spec = make_environment_spec(environment)
+
     networks = make_default_networks(
         agent_number=9,
         action_spec=spec.edge_actions,
@@ -89,11 +86,10 @@ def main(_):
         discount=0.996,
         target_update_period=100,
         variable_update_period=1000,
-        max_actor_steps=300*25000,
+        max_actor_steps=300 * 25000,
         log_every=5.0,
     )
 
     program = agent.build()
-    
+
     lp.launch(program, launch_type="local_mt", serialize_py_nodes=False)
-        
