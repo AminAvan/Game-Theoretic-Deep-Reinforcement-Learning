@@ -15,27 +15,20 @@ import tensorflow as tf
 
 # Get list of GPUs
 gpus = tf.config.list_physical_devices('GPU')
-memory_limit = 4 * 1024  # 4GB
+memory_limit = 6 * 1024  # 6GB
 
-if len(gpus) >= 2:
-    print(f"Configuring two GPUs: {gpus[0]}, {gpus[1]}")
-    # Configure first GPU
-    tf.config.experimental.set_virtual_device_configuration(
-        gpus[0],
-        [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory_limit)]
-    )
-    # Configure second GPU
-    tf.config.experimental.set_virtual_device_configuration(
-        gpus[1],
-        [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory_limit)]
-    )
-elif len(gpus) == 1:
+if gpus:
     print(f"Configuring one GPU: {gpus[0]}")
-    # Configure single GPU
-    tf.config.experimental.set_virtual_device_configuration(
-        gpus[0],
-        [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory_limit)]
-    )
+    try:
+        # Configure single GPU with 6GB memory limit
+        tf.config.experimental.set_virtual_device_configuration(
+            gpus[0],
+            [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=memory_limit)]
+        )
+        # Print GPU memory info for debugging
+        print(f"GPU Memory Limit Set: {memory_limit} MiB")
+    except RuntimeError as e:
+        print(f"Error configuring GPU: {e}")
 else:
     print("No GPU detected, running on CPU")
     # Disable GPU devices to ensure CPU execution

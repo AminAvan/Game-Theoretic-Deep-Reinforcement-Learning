@@ -12,7 +12,6 @@ from acme.utils import loggers
 import numpy as np
 import reverb
 import sonnet as snt
-import tensorflow as tf
 import tree
 import tensorflow as tf
 from acme import types
